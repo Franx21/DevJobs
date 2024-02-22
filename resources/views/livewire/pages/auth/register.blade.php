@@ -15,7 +15,6 @@ new #[Layout('layouts.guest')] class extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
-    public string $rol = '';
 
     /**
      * Handle an incoming registration request.
@@ -28,7 +27,7 @@ new #[Layout('layouts.guest')] class extends Component
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'rol' => ['required', 'numeric', 'between:1,2'],
         ]);
-
+        
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered($user = User::create($validated)));
@@ -57,7 +56,7 @@ new #[Layout('layouts.guest')] class extends Component
 
          <!-- Rol -->
          <div class="mt-4">
-            <x-input-label for="email" :value="__('¿Que tipo de cuenta deseas en DevJobs?')" />
+            <x-input-label for="rol" :value="__('¿Que tipo de cuenta deseas en DevJobs?')" />
             <select name="rol" id="rol" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full">
         <option value="">>-- Selecciona un rol --<</option>
         <option value="1">Developer - Obtener Empleo</option>
@@ -90,7 +89,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>
-                {{ __('Already registered?') }}
+                {{ __('¿Ya registrado?') }}
             </a>
 
             <x-primary-button class="ms-4">
