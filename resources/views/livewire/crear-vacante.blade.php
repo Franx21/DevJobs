@@ -52,7 +52,7 @@
     <!-- Descripcion -->
     <div>
         <x-input-label for="descripcion" :value="__('Descripcion del puesto')" />
-        <textarea wire:mode='descripcion' name="descripcion" placeholder="Descripcion general del puesto, experiencia"
+        <textarea wire:model="descripcion" name="descripcion" placeholder="Descripcion general del puesto, experiencia"
             class="border-gray-300 block mt-1 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm h-36"></textarea>
         <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
     </div>
