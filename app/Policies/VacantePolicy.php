@@ -37,7 +37,7 @@ class VacantePolicy
      */
     public function update(User $user, Vacante $vacante): bool
     {
-        //
+        return $user->id === $vacante->user_id;
     }
 
     /**
