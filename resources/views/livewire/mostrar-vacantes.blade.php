@@ -12,19 +12,19 @@
             <a href="#" class="bg-slate-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                 Candidatos
             </a>
-            <a href="#" class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+            <a href="{{ route('vacantes.edit', $vacante->id) }}"
+                class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                 Editar
             </a>
             <a href="#" class="bg-red-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                 Eliminar
             </a>
         </div>
-
     </div>
     @empty
     <p class="p-3 text-center text-sm text-gray-600">No hay vacantes que mostrar</p>
     @endforelse
-</div>
-<div class="flex justify-center mt-10">
-    {{ $vacante->links() }}
+    <div class="mx-3 mb-2 mt-10">
+        {{ $vacantes->links() }}
+    </div>
 </div>
