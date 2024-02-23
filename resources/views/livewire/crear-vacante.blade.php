@@ -8,13 +8,19 @@
     <!-- Salario -->
     <div>
         <x-input-label for="salario" :value="__('Salario Mensual')" />
-        <select name="salario" id="salario" class="block mt-1 w-full">
+        <select name="salario" id="salario"
+            class="border-gray-300 block mt-1 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+            <option>-- Seleccione --</option>
+            @foreach ($salarios as $salario)
+            <option value="{{ $salario->id }}">{{ $salario->salario }}</option>
+            @endforeach
         </select>
     </div>
     <!-- Categoria -->
     <div>
         <x-input-label for="categoria" :value="__('Categoria')" />
-        <select name="categoria" id="categoria" class="block mt-1 w-full">
+        <select name="categoria" id="categoria"
+            class="border-gray-300 block mt-1 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
         </select>
     </div>
 
@@ -27,14 +33,15 @@
     <!-- calendario ultimo dia -->
     <div>
         <x-input-label for="ultimo_dia" :value="__('Ultimo dia para postularse')" />
-        <x-text-input wire:model="form.email" id="ultimo_dia" class="mt-1 w-full" type="date" name="ultimo_dia"
-            autocomplete="ultimo_dia" />
+        <x-text-input wire:model="form.email" id="ultimo_dia"
+            class="border-gray-300 block mt-1 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+            type="date" name="ultimo_dia" autocomplete="ultimo_dia" />
     </div>
     <!-- Descripcion -->
     <div>
         <x-input-label for="descripcion" :value="__('Descripcion del puesto')" />
         <textarea name="descripcion" placeholder="Descripcion general del puesto, experiencia"
-            class="block mt-1 w-full h-36"></textarea>
+            class="border-gray-300 block mt-1 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm h-36"></textarea>
     </div>
     <!-- Imagen -->
     <div>
