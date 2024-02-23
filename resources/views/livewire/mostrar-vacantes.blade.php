@@ -16,7 +16,8 @@
                 class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                 Editar
             </a>
-            <a href="#" class="bg-red-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+            <a href="#" wire:click="$emit(' prueba')"
+                class="bg-red-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                 Eliminar
             </a>
         </div>
@@ -28,3 +29,29 @@
         {{ $vacantes->links() }}
     </div>
 </div>
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    Swal.fire({
+  title: "¿Eliminar vacante?",
+  text: "Una vacante eliminada no se puede recuperar",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Si, Eliminar!",
+  cancelButtonText: "Cancelar",
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  }
+});
+
+</script>
+@endpush
