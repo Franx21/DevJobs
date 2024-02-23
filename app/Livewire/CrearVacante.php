@@ -22,6 +22,7 @@ class CrearVacante extends Component
 
     protected $rules = [
         'titulo' => 'required|string',
+        'salario' => 'required',
         'categoria' => 'required',
         'empresa' => 'required',
         'ultimo_dia' => 'required',
@@ -37,10 +38,10 @@ class CrearVacante extends Component
         $datos['imagen'] = str_replace('public/vacantes/', '', $imagen);
 
         //crear vacante
-        Vacante::created([
+        Vacante::create([
             'titulo' => $datos['titulo'],
-            'salario_id' => $datos['salario_id'],
-            'categoria_id' => $datos['categoria_id'],
+            'salario_id' => $datos['salario'],
+            'categoria_id' => $datos['categoria'],
             'empresa' => $datos['empresa'],
             'ultimo_dia' => $datos['ultimo_dia'],
             'descripcion' => $datos['descripcion'],

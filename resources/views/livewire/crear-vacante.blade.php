@@ -11,7 +11,7 @@
     <!-- Salario -->
     <div>
         <x-input-label for="salario" :value="__('Salario Mensual')" />
-        <select name="salario" id="salario"
+        <select wire:model='salario' name="salario" id="salario"
             class="border-gray-300 block mt-1 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
             <option>-- Seleccione --</option>
             @foreach ($salarios as $salario)
