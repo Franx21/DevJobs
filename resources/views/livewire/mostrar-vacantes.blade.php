@@ -16,8 +16,8 @@
                 class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                 Editar
             </a>
-            <button href="#" class="bg-red-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center"
-                wire:click="$emit('prueba, {{ $vacante->id }}')">
+            <button class="bg-red-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center"
+                wire:click="$dispatch('mostrarAlerta', {{ $vacante->id }})">
                 Eliminar
             </button>
         </div>
@@ -34,27 +34,33 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    Livewire.on('prueba', vacanteId => {
-        alert('vacanteId');
-    })
-//     Swal.fire({
-//   title: "¿Eliminar vacante?",
-//   text: "Una vacante eliminada no se puede recuperar",
-//   icon: "warning",
-//   showCancelButton: true,
-//   confirmButtonColor: "#3085d6",
-//   cancelButtonColor: "#d33",
-//   confirmButtonText: "Si, Eliminar!",
-//   cancelButtonText: "Cancelar",
-// }).then((result) => {
-//   if (result.isConfirmed) {
-//     Swal.fire({
-//       title: "Deleted!",
-//       text: "Your file has been deleted.",
-//       icon: "success"
-//     });
-//   }
-// });
+    document.addEventListener('livewire:initialized', () => {
+        @this.on('mostrarAlerta', vacanteId => {
+            //alert(vacanteId);
+            Swal.fire({
+             title: "¿Eliminar vacante?",
+             text: "Una vacante eliminada no se puede recuperar",
+             icon: "warning",
+               showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Si, Eliminar!",
+  cancelButtonText: "Cancelar",
+}).then((result) => {
+  if (result.isConfirmed) {
+    //Eliminar vacante
+    @this.dispatch('eliminarVacante',{vacante: vacanteId} )
+    Swal.fire({
+      title: "Eliminado!",
+      text: "Tu vacante ha sido eliminada",
+      icon: "success"
+    });
+    
+  }
+});
+     })
+     
+    });
 
 </script>
 @endpush
