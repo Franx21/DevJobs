@@ -28,6 +28,16 @@
                 <p>{{ $vacante->descripcion }}</p>
             </div>
         </div>
-
+        @guest()
+        <div class="mt-5 bg-gray-50 border border-dashed p-5 text-center">
+            <p>Deseas plicar a esta vacante?
+                <a class="font-bold text-indigo-600" href="{{ route('register') }}">Odten una cuenta y aplica a esta y
+                    otras vacantes</a>
+            </p>
+        </div>
+        @endguest
     </div>
+    @cannot('create', App\Model\Vacante::class)
+    <livewire:postular-vacante />
+    @endcannot
 </div>
