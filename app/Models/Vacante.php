@@ -19,7 +19,7 @@ class Vacante extends Model
         'ultimo_dia',
         'descripcion',
         'imagen',
-        'user_id'
+        'user_id',
     ];
 
     public function categoria()
@@ -30,5 +30,10 @@ class Vacante extends Model
     public function salario()
     {
         return $this->belongsTo(Salario::class);
+    }
+
+    public function candidatos()
+    {
+        return $this->hasMany(Candidato::class);
     }
 }
