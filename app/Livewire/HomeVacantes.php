@@ -7,6 +7,12 @@ use Livewire\Component;
 
 class HomeVacantes extends Component
 {
+
+    public function buscar()
+    {
+        dd('Desde Componente Padre');
+    }
+
     public function render()
     {
         $vacantes = Vacante::all();

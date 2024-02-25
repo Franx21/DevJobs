@@ -1,4 +1,5 @@
 <div>
+    <livewire:filtrar-vacantes />
     <div class="max-w-7xl mx-auto">
         <h3 class="font-extrabold text-4xl text-gray-700 lg:text-center mb-12 mt-5">
             Nuestras Vacantes Disponibles
