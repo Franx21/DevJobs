@@ -15,7 +15,9 @@ class RolUsuario
      */
     public function handle(Request $request, Closure $next): Response
     {
-        dd('Desde Middleware');
+        if ($request->user()->rol === 1) {
+            return redirect()->route('home');
+        }
         return $next($request);
     }
 }
